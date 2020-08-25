@@ -1,0 +1,9 @@
+name: GameTemplate
+author: Repayed
+main: me.repayed.gametemplate.GameTemplate
+version: 1.0-SNAPSHOT
+description: A simple game template
+commands:
+  gametemplate:
+    usage: /gametemplate
+    description: The main command for the gametemplate.
