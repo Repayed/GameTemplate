@@ -3,21 +3,21 @@ package me.repayed.gametemplate.commands.subcommands;
 import me.repayed.gametemplate.commands.SubCommand;
 import org.bukkit.entity.Player;
 
-public class SetLobbySubCommand extends SubCommand {
+public class ReloadSubCommand extends SubCommand {
 
     @Override
     protected String getName() {
-        return "setlobby";
+        return "reload";
     }
 
     @Override
     protected String getUsage() {
-        return "/gametemplate setlobby";
+        return "/gametemplate reload";
     }
 
     @Override
     protected String getDescription() {
-        return "Sets the lobby for the game.";
+        return "Reloads the configuration.";
     }
 
     @Override

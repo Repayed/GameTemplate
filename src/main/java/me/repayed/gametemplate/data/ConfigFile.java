@@ -52,8 +52,8 @@ public class ConfigFile {
     }
 
     public void sendPlayerMessage(Player player, Message message) {
-        String formattedMessage = this.instance.getConfig().getString(message.getPath());
-        StringUtils.replace(formattedMessage, "%prefix%", this.instance.getConfig().getString(Message.PREFIX.getPath()));
+        String receivedMessage = this.instance.getConfig().getString(message.getPath());
+        String formattedMessage = StringUtils.replace(receivedMessage, "%prefix%", this.instance.getConfig().getString(Message.PREFIX.getPath()));
         player.sendMessage(Chat.format(formattedMessage));
     }
 

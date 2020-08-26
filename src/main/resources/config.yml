@@ -20,5 +20,12 @@ messages:
     game-started: "%prefix% &7The game has &a&lSTARTED&7."
     game-ended: "%prefix% &7The game has &c&lENDED&7."
     game-restarting: "%prefix% &7The game is &e&lRESTARTING&7."
-
   admin:
+    game-menu:
+      - ""
+      - " &3&lGame&b&lTemplate &7(Shows all useful commands)"
+      - ""
+      - " &8- &b/gametemplate reload &7(Reloads the configuration)"
+      - " &8- &b/gametemplate setlobby &7(Sets the lobby)"
+      - " &8- &b/gametemplate setspawn &7(Sets the game spawn)"
+      - ""

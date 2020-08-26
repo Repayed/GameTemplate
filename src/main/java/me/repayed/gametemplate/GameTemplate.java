@@ -1,13 +1,13 @@
 package me.repayed.gametemplate;
 
+import me.repayed.gametemplate.commands.CommandHandler;
 import me.repayed.gametemplate.data.ConfigFile;
 import me.repayed.gametemplate.game.GameArena;
 import me.repayed.gametemplate.listeners.blocks.BlockBreakListener;
 import me.repayed.gametemplate.listeners.blocks.BlockPlaceListener;
 import me.repayed.gametemplate.listeners.connection.PlayerConnectListener;
 import me.repayed.gametemplate.listeners.connection.PlayerDisconnectListener;
-import me.repayed.gametemplate.listeners.damage.PlayerDoDamageListener;
-import me.repayed.gametemplate.listeners.damage.PlayerTakeDamageListener;
+import me.repayed.gametemplate.listeners.damage.PlayerDamagePlayerListener;
 import me.repayed.gametemplate.player.GamePlayerManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -26,6 +26,7 @@ public class GameTemplate extends JavaPlugin {
         this.gamePlayerManager = new GamePlayerManager();
         this.gameArena = new GameArena(this);
 
+        this.getCommand("gametemplate").setExecutor(new CommandHandler(this));
         loadListeners();
     }
 
@@ -50,7 +51,8 @@ public class GameTemplate extends JavaPlugin {
         Arrays.asList(
                 new BlockBreakListener(), new BlockPlaceListener(),
                 new PlayerConnectListener(), new PlayerDisconnectListener(),
-                new PlayerDoDamageListener(), new PlayerTakeDamageListener()
+                new PlayerDamagePlayerListener()
         ).forEach(listener -> getServer().getPluginManager().registerEvents(listener, this));
     }
+
 }
