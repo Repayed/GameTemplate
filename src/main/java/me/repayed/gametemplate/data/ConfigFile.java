@@ -5,36 +5,33 @@ import me.repayed.gametemplate.utils.Chat;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import java.util.Optional;
 
 public class ConfigFile {
 
-    private final GameTemplate instance;
+    private final FileConfiguration configuration;
 
     private Location lobbyLocation;
     private Location gameLocation;
 
     public ConfigFile(final GameTemplate gameTemplate) {
-        this.instance = gameTemplate;
+        this.configuration = gameTemplate.getConfig();
 
         this.lobbyLocation = loadNewLocation("locations.lobby");
         this.gameLocation = loadNewLocation("locations.game");
     }
 
-
-    // TODO: this method needs to changed, as it's giving me warnings, and I hate warnings D: ;/
     private Location loadNewLocation(String path) {
-        final String locationWorld = this.instance.getConfig().getString(path + ".world");
-        final double xLocation = this.instance.getConfig().getDouble(path + ".x");
-        final double yLocation = this.instance.getConfig().getDouble(path + ".y");
-        final double zLocation = this.instance.getConfig().getDouble(path + ".z");
+        final String locationWorld = this.configuration.getString(path + ".world");
+        final double xLocation = this.configuration.getDouble(path + ".x");
+        final double yLocation = this.configuration.getDouble(path + ".y");
+        final double zLocation = this.configuration.getDouble(path + ".z");
 
         Optional<String> locationWorldName = Optional.ofNullable(locationWorld);
-        if(!locationWorldName.isPresent()) return null;
-
-        return new Location(Bukkit.getWorld(locationWorldName.get()), xLocation, yLocation, zLocation);
+        return locationWorldName.map(s -> new Location(Bukkit.getWorld(s), xLocation, yLocation, zLocation)).orElse(null);
     }
 
     public Location getLobbyLocation() {
@@ -50,12 +47,12 @@ public class ConfigFile {
     }
 
     public void sendPlayerMessage(Player player, Message message) {
-        String receivedMessage = this.instance.getConfig().getString(message.getPath());
-        String formattedMessage = StringUtils.replace(receivedMessage, "%prefix%", this.instance.getConfig().getString(Message.PREFIX.getPath()));
+        String receivedMessage = this.configuration.getString(message.getPath());
+        String formattedMessage = StringUtils.replace(receivedMessage, "%prefix%", this.configuration.getString(Message.PREFIX.getPath()));
         player.sendMessage(Chat.format(formattedMessage));
     }
 
     public void sendPlayerListMessage(Player player, Message message) {
-        this.instance.getConfig().getStringList(message.getPath()).forEach(line -> player.sendMessage(Chat.format(line)));
+        this.configuration.getStringList(message.getPath()).forEach(line -> player.sendMessage(Chat.format(line)));
     }
 }

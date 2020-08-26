@@ -29,3 +29,4 @@ messages:
       - " &8- &b/gametemplate setlobby &7(Sets the lobby)"
       - " &8- &b/gametemplate setspawn &7(Sets the game spawn)"
       - ""
+    reloaded-config: "%prefix% &7You have &a&lRELOADED &7the configuration."

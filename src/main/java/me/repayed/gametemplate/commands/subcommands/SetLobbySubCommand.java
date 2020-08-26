@@ -1,9 +1,16 @@
 package me.repayed.gametemplate.commands.subcommands;
 
+import me.repayed.gametemplate.GameTemplate;
 import me.repayed.gametemplate.commands.SubCommand;
 import org.bukkit.entity.Player;
 
 public class SetLobbySubCommand extends SubCommand {
+
+    private GameTemplate instance;
+
+    public SetLobbySubCommand(GameTemplate gameTemplate) {
+        this.instance = gameTemplate;
+    }
 
     @Override
     protected String getName() {

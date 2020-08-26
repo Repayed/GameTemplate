@@ -6,6 +6,7 @@ import me.repayed.gametemplate.commands.subcommands.SetLobbySubCommand;
 import me.repayed.gametemplate.commands.subcommands.SetSpawnSubCommand;
 import me.repayed.gametemplate.data.ConfigFile;
 import me.repayed.gametemplate.data.Message;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -26,9 +27,9 @@ public class CommandHandler implements CommandExecutor {
         this.configFile = gameTemplate.getConfigFile();
 
         this.subCommands = new HashSet<>();
-        this.subCommands.add(new ReloadSubCommand());
-        this.subCommands.add(new SetLobbySubCommand());
-        this.subCommands.add(new SetSpawnSubCommand());
+        this.subCommands.add(new ReloadSubCommand(this.gameTemplate));
+        this.subCommands.add(new SetLobbySubCommand(this.gameTemplate));
+        this.subCommands.add(new SetSpawnSubCommand(this.gameTemplate));
     }
 
     @Override
@@ -43,6 +44,7 @@ public class CommandHandler implements CommandExecutor {
             if (optionalPermission.isPresent()) {
                 if (!player.hasPermission(optionalPermission.get())) {
                     this.configFile.sendPlayerMessage(player, Message.NO_PERMISSION);
+                    player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 0.95F, 1.0F);
                     return true;
                 } else {
                     if (args.length == 1) {

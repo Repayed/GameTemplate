@@ -9,7 +9,8 @@ public enum Message {
     GAME_ENDED("messages.user.game-ended"),
     GAME_RESTARTING("messages.user.game-restarting"),
 
-    ADMIN_GAME_MENU("messages.admin.game-menu");
+    ADMIN_GAME_MENU("messages.admin.game-menu"),
+    RELOADED_CONFIG("messages.admin.reloaded-config");
 
     private String path;
 
