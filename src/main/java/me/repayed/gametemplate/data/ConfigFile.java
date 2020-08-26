@@ -7,6 +7,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
+import java.util.Optional;
+
 public class ConfigFile {
 
     private final GameTemplate instance;
@@ -17,26 +19,22 @@ public class ConfigFile {
     public ConfigFile(final GameTemplate gameTemplate) {
         this.instance = gameTemplate;
 
-        loadLobbyLocation();
-        loadGameLocation();
+        this.lobbyLocation = loadNewLocation("locations.lobby");
+        this.gameLocation = loadNewLocation("locations.game");
     }
 
-    private void loadLobbyLocation() {
-        final String lobbyWorld = this.instance.getConfig().getString("locations.lobby.world");
-        final double lobbyXLocation = this.instance.getConfig().getInt("locations.lobby.x");
-        final double lobbyYLocation = this.instance.getConfig().getInt("locations.lobby.y");
-        final double lobbyZLocation = this.instance.getConfig().getInt("locations.lobby.z");
 
-        this.lobbyLocation = new Location(Bukkit.getWorld(lobbyWorld), lobbyXLocation, lobbyYLocation, lobbyZLocation);
-    }
+    // TODO: this method needs to changed, as it's giving me warnings, and I hate warnings D: ;/
+    private Location loadNewLocation(String path) {
+        final String locationWorld = this.instance.getConfig().getString(path + ".world");
+        final double xLocation = this.instance.getConfig().getDouble(path + ".x");
+        final double yLocation = this.instance.getConfig().getDouble(path + ".y");
+        final double zLocation = this.instance.getConfig().getDouble(path + ".z");
 
-    private void loadGameLocation() {
-        final String gameWorld = this.instance.getConfig().getString("locations.game.world");
-        final double gameXLocation = this.instance.getConfig().getInt("locations.game.x");
-        final double gameYLocation = this.instance.getConfig().getInt("locations.game.y");
-        final double gameZLocation = this.instance.getConfig().getInt("locations.game.z");
+        Optional<String> locationWorldName = Optional.ofNullable(locationWorld);
+        if(!locationWorldName.isPresent()) return null;
 
-        this.gameLocation = new Location(Bukkit.getWorld(gameWorld), gameXLocation, gameYLocation, gameZLocation);
+        return new Location(Bukkit.getWorld(locationWorldName.get()), xLocation, yLocation, zLocation);
     }
 
     public Location getLobbyLocation() {
