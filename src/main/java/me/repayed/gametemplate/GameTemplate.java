@@ -21,18 +21,13 @@ public class GameTemplate extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        loadConfig();
+        this.saveDefaultConfig();
         this.configFile = new ConfigFile(this);
         this.gamePlayerManager = new GamePlayerManager();
         this.gameArena = new GameArena(this);
 
         this.getCommand("gametemplate").setExecutor(new CommandHandler(this));
         loadListeners();
-    }
-
-    private void loadConfig() {
-        getConfig().options().copyDefaults(true);
-        saveConfig();
     }
 
     public ConfigFile getConfigFile() {
@@ -50,7 +45,7 @@ public class GameTemplate extends JavaPlugin {
     private void loadListeners() {
         Arrays.asList(
                 new BlockBreakListener(), new BlockPlaceListener(),
-                new PlayerConnectListener(), new PlayerDisconnectListener(),
+                new PlayerConnectListener(this), new PlayerDisconnectListener(),
                 new PlayerDamagePlayerListener()
         ).forEach(listener -> getServer().getPluginManager().registerEvents(listener, this));
     }

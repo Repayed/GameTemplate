@@ -9,11 +9,11 @@ import org.bukkit.entity.Player;
 
 public class ReloadSubCommand extends SubCommand {
 
-    private final GameTemplate instance;
+    private final GameTemplate gameTemplate;
     private ConfigFile configFile;
 
     public ReloadSubCommand(GameTemplate gameTemplate) {
-        this.instance = gameTemplate;
+        this.gameTemplate = gameTemplate;
         this.configFile = gameTemplate.getConfigFile();
     }
 
@@ -33,9 +33,10 @@ public class ReloadSubCommand extends SubCommand {
         return "Reloads the configuration.";
     }
 
+    // TODO: Make a proper configuration file as this won't work properly and it's a waste of time.
     @Override
     protected void execute(Player player, String[] args) {
-        this.instance.reloadConfig();
+        this.gameTemplate.reloadConfig();
         this.configFile.sendPlayerMessage(player, Message.RELOADED_CONFIG);
         player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, .95F, 1.0F);
     }

@@ -8,43 +8,44 @@ import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-public class SetLobbySubCommand extends SubCommand {
+public class SetGameSpawnSubCommand extends SubCommand {
 
     private GameTemplate gameTemplate;
     private ConfigFile configFile;
 
-    public SetLobbySubCommand(GameTemplate gameTemplate) {
+    public SetGameSpawnSubCommand(GameTemplate gameTemplate) {
         this.gameTemplate = gameTemplate;
         this.configFile = gameTemplate.getConfigFile();
     }
 
     @Override
     protected String getName() {
-        return "setlobby";
+        return "setspawn";
     }
 
     @Override
     protected String getUsage() {
-        return "/gametemplate setlobby";
+        return "/gametemplate setspawn";
     }
 
     @Override
     protected String getDescription() {
-        return "Sets the lobby for the game.";
+        return "Sets the spawn for the game.";
     }
 
     @Override
     protected void execute(Player player, String[] args) {
         Location location = player.getLocation();
 
-        this.gameTemplate.getConfig().set("locations.lobby.world", location.getWorld().getName());
-        this.gameTemplate.getConfig().set("locations.lobby.x", location.getX());
-        this.gameTemplate.getConfig().set("locations.lobby.y", location.getY());
-        this.gameTemplate.getConfig().set("locations.lobby.z", location.getZ());
+        this.gameTemplate.getConfig().set("locations.game.world", location.getWorld().getName());
+        this.gameTemplate.getConfig().set("locations.game.x", location.getX());
+        this.gameTemplate.getConfig().set("locations.game.y", location.getY());
+        this.gameTemplate.getConfig().set("locations.game.z", location.getZ());
 
         this.gameTemplate.saveConfig();
 
-        this.configFile.sendPlayerMessage(player, Message.SET_LOBBY_SPAWN);
+        this.configFile.sendPlayerMessage(player, Message.SET_GAME_SPAWN);
         player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, .95F, 1.0F);
+
     }
 }

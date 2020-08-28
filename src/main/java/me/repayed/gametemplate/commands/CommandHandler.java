@@ -3,7 +3,7 @@ package me.repayed.gametemplate.commands;
 import me.repayed.gametemplate.GameTemplate;
 import me.repayed.gametemplate.commands.subcommands.ReloadSubCommand;
 import me.repayed.gametemplate.commands.subcommands.SetLobbySubCommand;
-import me.repayed.gametemplate.commands.subcommands.SetSpawnSubCommand;
+import me.repayed.gametemplate.commands.subcommands.SetGameSpawnSubCommand;
 import me.repayed.gametemplate.data.ConfigFile;
 import me.repayed.gametemplate.data.Message;
 import org.bukkit.Sound;
@@ -29,7 +29,7 @@ public class CommandHandler implements CommandExecutor {
         this.subCommands = new HashSet<>();
         this.subCommands.add(new ReloadSubCommand(this.gameTemplate));
         this.subCommands.add(new SetLobbySubCommand(this.gameTemplate));
-        this.subCommands.add(new SetSpawnSubCommand(this.gameTemplate));
+        this.subCommands.add(new SetGameSpawnSubCommand(this.gameTemplate));
     }
 
     @Override
@@ -54,6 +54,7 @@ public class CommandHandler implements CommandExecutor {
                                 .ifPresent(subCommand -> subCommand.execute(player, args));
                     } else {
                         this.configFile.sendPlayerListMessage(player, Message.ADMIN_GAME_MENU);
+                        player.playSound(player.getLocation(), Sound.ENTITY_COW_STEP, .95F, 1.0F);
                     }
 
                 }

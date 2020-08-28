@@ -10,6 +10,8 @@ public enum Message {
     GAME_RESTARTING("messages.user.game-restarting"),
 
     ADMIN_GAME_MENU("messages.admin.game-menu"),
+    SET_GAME_SPAWN("messages.admin.set-game-spawn"),
+    SET_LOBBY_SPAWN("messages.admin.set-lobby-spawn"),
     RELOADED_CONFIG("messages.admin.reloaded-config");
 
     private String path;

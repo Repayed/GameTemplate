@@ -7,6 +7,7 @@ locations:
     x: 12
     y: 12
     z: 12
+
   game:
     world: "World"
     x: 12
@@ -29,4 +30,6 @@ messages:
       - " &8- &b/gametemplate setlobby &7(Sets the lobby)"
       - " &8- &b/gametemplate setspawn &7(Sets the game spawn)"
       - ""
+    set-game-spawn: "%prefix% &7You have set the &b&lGAME SPAWN&7."
+    set-lobby-spawn: "%prefix% &7You have set the &b&lLOBBY SPAWN&7."
     reloaded-config: "%prefix% &7You have &a&lRELOADED &7the configuration."
