@@ -10,10 +10,10 @@ import org.bukkit.entity.Player;
 
 public class SetGameSpawnSubCommand extends SubCommand {
 
-    private GameTemplate gameTemplate;
-    private ConfigFile configFile;
+    private final GameTemplate gameTemplate;
+    private final ConfigFile configFile;
 
-    public SetGameSpawnSubCommand(GameTemplate gameTemplate) {
+    public SetGameSpawnSubCommand(final GameTemplate gameTemplate) {
         this.gameTemplate = gameTemplate;
         this.configFile = gameTemplate.getConfigFile();
     }

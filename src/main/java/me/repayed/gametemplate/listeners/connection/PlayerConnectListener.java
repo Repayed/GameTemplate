@@ -9,9 +9,9 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerConnectListener implements Listener {
 
-    private ConfigFile configFile;
+    private final ConfigFile configFile;
 
-    public PlayerConnectListener(GameTemplate gameTemplate) {
+    public PlayerConnectListener(final GameTemplate gameTemplate) {
         this.configFile = gameTemplate.getConfigFile();
     }
 

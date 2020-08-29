@@ -3,10 +3,10 @@ package me.repayed.gametemplate.player;
 import java.util.UUID;
 
 public class GamePlayer {
-    private UUID uuid;
+    private final UUID uuid;
     private boolean isPlaying;
 
-    public GamePlayer(UUID uuid) {
+    public GamePlayer(final UUID uuid) {
         this.uuid = uuid;
     }
 
@@ -20,11 +20,6 @@ public class GamePlayer {
 
     public void setPlaying(boolean isPlaying) {
         this.isPlaying = isPlaying;
-    }
-
-    @Override
-    public String toString() {
-        return this.uuid.toString();
     }
 
 //    @Override

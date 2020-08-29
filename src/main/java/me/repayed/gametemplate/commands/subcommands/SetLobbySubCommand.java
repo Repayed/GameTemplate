@@ -10,10 +10,10 @@ import org.bukkit.entity.Player;
 
 public class SetLobbySubCommand extends SubCommand {
 
-    private GameTemplate gameTemplate;
-    private ConfigFile configFile;
+    private final GameTemplate gameTemplate;
+    private final ConfigFile configFile;
 
-    public SetLobbySubCommand(GameTemplate gameTemplate) {
+    public SetLobbySubCommand(final GameTemplate gameTemplate) {
         this.gameTemplate = gameTemplate;
         this.configFile = gameTemplate.getConfigFile();
     }

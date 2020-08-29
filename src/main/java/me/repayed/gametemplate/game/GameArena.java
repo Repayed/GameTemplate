@@ -15,7 +15,7 @@ public class GameArena {
     private final Location lobbyLocation;
     private final Location gameLocation;
 
-    public GameArena(GameTemplate gameTemplate) {
+    public GameArena(final GameTemplate gameTemplate) {
         final ConfigFile configFile = gameTemplate.getConfigFile();
         this.playerManager = gameTemplate.getGamePlayerManager();
 

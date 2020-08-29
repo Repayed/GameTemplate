@@ -18,11 +18,11 @@ import java.util.Set;
 
 public class CommandHandler implements CommandExecutor {
 
-    private Set<SubCommand> subCommands;
-    private GameTemplate gameTemplate;
-    private ConfigFile configFile;
+    private final Set<SubCommand> subCommands;
+    private final GameTemplate gameTemplate;
+    private final ConfigFile configFile;
 
-    public CommandHandler(GameTemplate gameTemplate) {
+    public CommandHandler(final GameTemplate gameTemplate) {
         this.gameTemplate = gameTemplate;
         this.configFile = gameTemplate.getConfigFile();
 

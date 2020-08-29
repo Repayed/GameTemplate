@@ -6,14 +6,15 @@ import java.util.Set;
 import java.util.UUID;
 
 /**
- * This class manages all of the current game players.
  *
- * It allows you to search for specific players, remove them, add them,
- * and so on.
+ * This class is designed to manage all of the current
+ * GamePlayer's. It does so, by storing them in a HashSet
+ * in order to make sure that there are no repeated elements.
+ *
  */
 
 public class GamePlayerManager {
-    private Set<GamePlayer> gamePlayers;
+    private final Set<GamePlayer> gamePlayers;
 
     public GamePlayerManager() {
         this.gamePlayers = new HashSet<>();
@@ -24,8 +25,8 @@ public class GamePlayerManager {
     }
 
     /**
-     * Attempts to find the first player within the set
-     * that has the same uuid to the parameter uuid.
+     * Attempts to find the player that has the
+     * same uuid as the given parameter's uuid.
      *
      * @param uuid the uuid of the person being checked.
      * @return an optional which could be null or not depending on if the player is in the list.
@@ -33,8 +34,8 @@ public class GamePlayerManager {
 
     public Optional<GamePlayer> getGamePlayer(UUID uuid) {
         return this.gamePlayers.stream()
-                .filter(player -> player.toString().equalsIgnoreCase(uuid.toString()))
-                .findFirst();
+                .filter(player -> player.getUuid().equals(uuid))
+                .findAny();
     }
 
     public void addGamePlayer(GamePlayer gamePlayer) {

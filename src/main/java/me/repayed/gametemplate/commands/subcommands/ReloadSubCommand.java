@@ -10,9 +10,9 @@ import org.bukkit.entity.Player;
 public class ReloadSubCommand extends SubCommand {
 
     private final GameTemplate gameTemplate;
-    private ConfigFile configFile;
+    private final ConfigFile configFile;
 
-    public ReloadSubCommand(GameTemplate gameTemplate) {
+    public ReloadSubCommand(final GameTemplate gameTemplate) {
         this.gameTemplate = gameTemplate;
         this.configFile = gameTemplate.getConfigFile();
     }
