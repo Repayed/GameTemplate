@@ -1,4 +1,4 @@
-package me.repayed.gametemplate.utils;
+package me.repayed.gametemplate.util;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -6,6 +6,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,8 +25,9 @@ public class ItemBuilder {
     }
 
     public ItemBuilder withLore(String... lore) {
-        List<String> temporaryLore = Arrays.asList(lore);
-        temporaryLore.forEach(Chat::format);
+        List<String> temporaryLore = new ArrayList<>();
+
+        Arrays.stream(lore).forEach(loreLine -> temporaryLore.add(Chat.format(loreLine)));
         this.itemMeta.setLore(temporaryLore);
         return this;
     }

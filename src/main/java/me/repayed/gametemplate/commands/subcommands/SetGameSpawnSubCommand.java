@@ -8,6 +8,8 @@ import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
+import java.util.Objects;
+
 public class SetGameSpawnSubCommand extends SubCommand {
 
     private final GameTemplate gameTemplate;
@@ -37,7 +39,7 @@ public class SetGameSpawnSubCommand extends SubCommand {
     protected void execute(Player player, String[] args) {
         Location location = player.getLocation();
 
-        this.gameTemplate.getConfig().set("locations.game.world", location.getWorld().getName());
+        this.gameTemplate.getConfig().set("locations.game.world", (Objects.requireNonNull(location.getWorld()).getName()));
         this.gameTemplate.getConfig().set("locations.game.x", location.getX());
         this.gameTemplate.getConfig().set("locations.game.y", location.getY());
         this.gameTemplate.getConfig().set("locations.game.z", location.getZ());

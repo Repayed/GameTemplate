@@ -1,4 +1,4 @@
-package me.repayed.gametemplate.listeners.damage;
+package me.repayed.gametemplate.listener.damage;
 
 import org.bukkit.event.Listener;
 

@@ -1,4 +1,4 @@
-package me.repayed.gametemplate.listeners.connection;
+package me.repayed.gametemplate.listener.connection;
 
 import org.bukkit.event.Listener;
 

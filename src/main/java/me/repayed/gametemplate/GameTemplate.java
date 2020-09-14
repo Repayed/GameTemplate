@@ -3,11 +3,11 @@ package me.repayed.gametemplate;
 import me.repayed.gametemplate.commands.CommandHandler;
 import me.repayed.gametemplate.data.ConfigFile;
 import me.repayed.gametemplate.game.GameArena;
-import me.repayed.gametemplate.listeners.blocks.BlockBreakListener;
-import me.repayed.gametemplate.listeners.blocks.BlockPlaceListener;
-import me.repayed.gametemplate.listeners.connection.PlayerConnectListener;
-import me.repayed.gametemplate.listeners.connection.PlayerDisconnectListener;
-import me.repayed.gametemplate.listeners.damage.PlayerDamagePlayerListener;
+import me.repayed.gametemplate.listener.blocks.BlockBreakListener;
+import me.repayed.gametemplate.listener.blocks.BlockPlaceListener;
+import me.repayed.gametemplate.listener.connection.PlayerConnectListener;
+import me.repayed.gametemplate.listener.connection.PlayerDisconnectListener;
+import me.repayed.gametemplate.listener.damage.PlayerDamagePlayerListener;
 import me.repayed.gametemplate.player.GamePlayerManager;
 import org.bukkit.plugin.java.JavaPlugin;
 

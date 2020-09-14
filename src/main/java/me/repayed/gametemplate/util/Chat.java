@@ -1,4 +1,4 @@
-package me.repayed.gametemplate.utils;
+package me.repayed.gametemplate.util;
 
 import org.bukkit.ChatColor;
 

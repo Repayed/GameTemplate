@@ -1,13 +1,14 @@
 package me.repayed.gametemplate.data;
 
 import me.repayed.gametemplate.GameTemplate;
-import me.repayed.gametemplate.utils.Chat;
+import me.repayed.gametemplate.util.Chat;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public class ConfigFile {
@@ -47,9 +48,13 @@ public class ConfigFile {
     }
 
     public void sendPlayerMessage(Player player, Message message) {
+        player.sendMessage(getMeantMessage(message));
+    }
+
+    private String getMeantMessage(Message message) {
         String receivedMessage = this.configuration.getString(message.getPath());
         String formattedMessage = StringUtils.replace(receivedMessage, "%prefix%", this.configuration.getString(Message.PREFIX.getPath()));
-        player.sendMessage(Chat.format(formattedMessage));
+        return Chat.format(Objects.requireNonNull(formattedMessage));
     }
 
     public void sendPlayerListMessage(Player player, Message message) {

@@ -17,7 +17,6 @@ public class ReloadSubCommand extends SubCommand {
         this.configFile = gameTemplate.getConfigFile();
     }
 
-
     @Override
     protected String getName() {
         return "reload";
